@@ -1,49 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        h1 {
-            color: #0066cc;
-        }
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9em;
-            color: #777;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Sign-Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f5f2;
+      color: #333;
+    }
+
+    header {
+      background: #6a9fb5;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .treatments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .treatment-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .treatment-card:hover {
+      transform: scale(1.03);
+    }
+
+    .treatment-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    .treatment-card h3 {
+      margin: 1rem 0 0.5rem;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none; 
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+
+    form h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #6a9fb5;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #5a8ca0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Page</h1>
-        <p>This is a simple HTML example.</p>
-    </header>
+  <header>
+    <h1>Relax & Refresh</h1>
+    <p>Your path to peace starts here</p>
+  </header>
 
-    <main>
-        <h2>About</h2>
-        <p>This is a basic webpage created with HTML and a little CSS.</p>
+  <!-- Massage Treatments -->
+  <section>
+    <h2>Our Treatments</h2>
+    <div class="treatments">
+      <div class="treatment-card" onclick="openModal('swedishModal')">
+        <img src="swedish.jpg" alt="Swedish Massage">
+        <h3>Swedish Massage</h3>
+        <p>A relaxing full-body massage to ease stress.</p>
+      </div>
+      <div class="treatment-card" onclick="openModal('deepModal')">
+        <img src="deep.jpg" alt="Deep Tissue Massage">
+        <h3>Deep Tissue Massage</h3>
+        <p>Targets deep muscle tension for lasting relief.</p>
+      </div>
+      <div class="treatment-card" onclick="openModal('stoneModal')">
+        <img src="stone.jpg" alt="Hot Stone Massage">
+        <h3>Hot Stone Massage</h3>
+        <p>Warm stones melt away stress and tightness.</p>
+      </div>
+    </div>
+  </section>
 
-        <h2>Links</h2>
-        <ul>
-            <li><a href="https://www.example.com" target="_blank">Example Link</a></li>
-        </ul>
-    </main>
+  <!-- Modals -->
+  <div id="swedishModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('swedishModal')">&times;</span>
+      <h2>Swedish Massage</h2>
+      <p>This classic massage technique uses long, flowing strokes to relax muscles, improve circulation, and reduce stress. Perfect for beginners or anyone seeking a deeply relaxing experience.</p>
+    </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 My Website</p>
-    </footer>
+  <div id="deepModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('deepModal')">&times;</span>
+      <h2>Deep Tissue Massage</h2>
+      <p>Designed to target chronic muscle tension, deep tissue massage applies firm pressure to reach deeper layers of muscle and fascia. Ideal for athletes or those with persistent soreness.</p>
+    </div>
+  </div>
+
+  <div id="stoneModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('stoneModal')">&times;</span>
+      <h2>Hot Stone Massage</h2>
+      <p>Smooth, heated stones are placed on key points of the body and combined with massage techniques to melt away stress and loosen tight muscles, providing ultimate relaxation.</p>
+    </div>
+  </div>
+
+  <!-- Sign-Up Form -->
+  <section>
+    <form id="massageForm">
+      <h2>Book Your Massage</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="treatment">Choose Treatment</label>
+      <select id="treatment" name="treatment" required>
+        <option value="">-- Select a Treatment --</option>
+        <option value="Swedish Massage">Swedish Massage</option>
+        <option value="Deep Tissue Massage">Deep Tissue Massage</option>
+        <option value="Hot Stone Massage">Hot Stone Massage</option>
+      </select>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Relax & Refresh Spa</p>
+  </footer>
+
+  <script>
+    // Open modal
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+
+    // Close modal
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
+
+    // Form submission
+    document.getElementById('massageForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Massage request sent!');
+      this.reset();
+    });
+  </script>
 </body>
 </html>
