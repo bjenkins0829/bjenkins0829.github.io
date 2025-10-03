@@ -4,148 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Massage Sign-Up</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f5f2;
-      color: #333;
-    }
-
-    header {
-      background: #6a9fb5;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    section {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .treatments {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .treatment-card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .treatment-card:hover {
-      transform: scale(1.03);
-    }
-
-    .treatment-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background: #ddd;
-    }
-
-    .treatment-card h3 {
-      margin: 1rem 0 0.5rem;
-    }
-
-    /* Modal styles */
-    .modal {
-      display: none; 
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.6);
-    }
-
-    .modal-content {
-      background: white;
-      margin: 10% auto;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 600px;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #666;
-    }
-
-    .close:hover {
-      color: #000;
-    }
-
-    form {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 2rem auto;
-    }
-
-    form h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    label {
-      display: block;
-      margin: 0.5rem 0 0.2rem;
-    }
-
-    input, select, button {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    button {
-      background: #6a9fb5;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #5a8ca0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #eee;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
@@ -218,6 +77,47 @@
         <option value="Hot Stone Massage">Hot Stone Massage</option>
       </select>
 
+      <!-- Date -->
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required>
+
+      <!-- Time -->
+      <label for="time">Preferred Time</label>
+      <select id="time" name="time" required>
+        <option value="">-- Select a Time --</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:30 AM">10:30 AM</option>
+        <option value="11:00 AM" disabled style="color:gray;">11:00 AM (unavailable)</option>
+        <option value="11:30 PM">11:30 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="2:00 PM" disabled style="color:gray;">2:00 PM (unavailable)</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="4:00 PM" disabled style="color:gray;">4:00 PM (unavailable)</option>
+        <option value="5:00 PM" disabled style="color:gray;">5:00 PM (unavailable)</option>
+      </select>
+
+      <!-- Add-ons -->
+      <h3>Extras</h3>
+      <label><input type="checkbox" name="addons" value="Foot Soak"> Foot Soak</label>
+      <label><input type="checkbox" name="addons" value="Face Mask"> Face Mask</label>
+      <label><input type="checkbox" name="addons" value="Scalp Massage"> Scalp Massage</label>
+
+      <!-- Preferences -->
+      <h3>Preferences</h3>
+      <label for="scents">Preferred Scents</label>
+      <input type="text" id="scents" name="scents" placeholder="e.g. Lavender, Eucalyptus">
+
+      <label for="snacks">Preferred Snacks</label>
+      <input type="text" id="snacks" name="snacks" placeholder="e.g. Fruit, Dark Chocolate">
+
+      <label for="drinks">Preferred Drinks</label>
+      <input type="text" id="drinks" name="drinks" placeholder="e.g. Herbal Tea, Sparkling Water">
+
+      <!-- Special Requests -->
+    <h3>Special Requests</h3>
+    <label for="requests">Anything else you'd like?</label>
+    <textarea id="requests" name="requests" rows="4" placeholder="Write your special requests here..."></textarea>
+
       <button type="submit">Submit Request</button>
     </form>
   </section>
@@ -225,34 +125,7 @@
   <footer>
     <p>&copy; 2025 Relax & Refresh Spa</p>
   </footer>
-
-  <script>
-    // Open modal
-    function openModal(id) {
-      document.getElementById(id).style.display = "block";
-    }
-
-    // Close modal
-    function closeModal(id) {
-      document.getElementById(id).style.display = "none";
-    }
-
-    // Close modal if clicked outside
-    window.onclick = function(event) {
-      const modals = document.querySelectorAll('.modal');
-      modals.forEach(modal => {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      });
-    };
-
-    // Form submission
-    document.getElementById('massageForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      alert('Massage request sent!');
-      this.reset();
-    });
-  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
