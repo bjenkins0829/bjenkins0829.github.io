@@ -25,13 +25,6 @@ window.onclick = function(event) {
 };
 
 // Form submission
-// document.getElementById('massageForm').addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     alert('Massage request sent with your preferences!');
-//     this.reset();
-// });
-
-// Form submission
 document.getElementById('massageForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
