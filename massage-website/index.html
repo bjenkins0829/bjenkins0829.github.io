@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Sign-Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Relax & Refresh</h1>
+    <p>Your path to peace starts here</p>
+  </header>
+
+  <!-- Massage Treatments -->
+  <section>
+    <h2>Our Treatments</h2>
+    <div class="treatments">
+      <div class="treatment-card" onclick="openModal('swedishModal')">
+        <img src="swedish.jpg" alt="Swedish Massage">
+        <h3>Swedish Massage</h3>
+        <p>A relaxing full-body massage to ease stress.</p>
+      </div>
+      <div class="treatment-card" onclick="openModal('deepModal')">
+        <img src="deep.jpg" alt="Deep Tissue Massage">
+        <h3>Deep Tissue Massage</h3>
+        <p>Targets deep muscle tension for lasting relief.</p>
+      </div>
+      <div class="treatment-card" onclick="openModal('stoneModal')">
+        <img src="stone.jpg" alt="Hot Stone Massage">
+        <h3>Hot Stone Massage</h3>
+        <p>Warm stones melt away stress and tightness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div id="swedishModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('swedishModal')">&times;</span>
+      <h2>Swedish Massage</h2>
+      <p>This classic massage technique uses long, flowing strokes to relax muscles, improve circulation, and reduce stress. Perfect for beginners or anyone seeking a deeply relaxing experience.</p>
+    </div>
+  </div>
+
+  <div id="deepModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('deepModal')">&times;</span>
+      <h2>Deep Tissue Massage</h2>
+      <p>Designed to target chronic muscle tension, deep tissue massage applies firm pressure to reach deeper layers of muscle and fascia. Ideal for athletes or those with persistent soreness.</p>
+    </div>
+  </div>
+
+  <div id="stoneModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('stoneModal')">&times;</span>
+      <h2>Hot Stone Massage</h2>
+      <p>Smooth, heated stones are placed on key points of the body and combined with massage techniques to melt away stress and loosen tight muscles, providing ultimate relaxation.</p>
+    </div>
+  </div>
+
+  <!-- Sign-Up Form -->
+  <section>
+    <form id="massageForm">
+      <h2>Book Your Massage</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="treatment">Choose Treatment</label>
+      <select id="treatment" name="treatment" required>
+        <option value="">-- Select a Treatment --</option>
+        <option value="Swedish Massage">Swedish Massage</option>
+        <option value="Deep Tissue Massage">Deep Tissue Massage</option>
+        <option value="Hot Stone Massage">Hot Stone Massage</option>
+      </select>
+
+      <!-- Date -->
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required>
+
+      <!-- Time -->
+      <label for="time">Preferred Time</label>
+      <select id="time" name="time" required>
+        <option value="">-- Select a Time --</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:30 AM">10:30 AM</option>
+        <option value="11:00 AM" disabled style="color:gray;">11:00 AM (unavailable)</option>
+        <option value="11:30 PM">11:30 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="2:00 PM" disabled style="color:gray;">2:00 PM (unavailable)</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="4:00 PM" disabled style="color:gray;">4:00 PM (unavailable)</option>
+        <option value="5:00 PM" disabled style="color:gray;">5:00 PM (unavailable)</option>
+      </select>
+
+      <!-- Add-ons -->
+      <h3>Extras</h3>
+      <label><input type="checkbox" name="addons" value="Foot Soak"> Foot Soak</label>
+      <label><input type="checkbox" name="addons" value="Face Mask"> Face Mask</label>
+      <label><input type="checkbox" name="addons" value="Scalp Massage"> Scalp Massage</label>
+
+      <!-- Preferences -->
+      <h3>Preferences</h3>
+      <label for="scents">Preferred Scents</label>
+      <input type="text" id="scents" name="scents" placeholder="e.g. Lavender, Eucalyptus">
+
+      <label for="snacks">Preferred Snacks</label>
+      <input type="text" id="snacks" name="snacks" placeholder="e.g. Fruit, Dark Chocolate">
+
+      <label for="drinks">Preferred Drinks</label>
+      <input type="text" id="drinks" name="drinks" placeholder="e.g. Herbal Tea, Sparkling Water">
+
+      <!-- Special Requests -->
+    <h3>Special Requests</h3>
+    <label for="requests">Anything else you'd like?</label>
+    <textarea id="requests" name="requests" rows="4" placeholder="Write your special requests here..."></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Relax & Refresh Spa</p>
+  </footer>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
