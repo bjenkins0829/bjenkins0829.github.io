@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anniversary Itinerary</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Anniversary Night</h1>
+    <p class="subtitle">An exciting night of food and drinks in DC</p>
+  </header>
+
+  <main>
+    <section class="itinerary">
+      <h2>Evening Plans</h2>
+
+      <div class="card">
+        <div class="time">📍 Dinner at St. Anselm</div>
+        <p>Reservation at <strong>8:30 PM</strong></p>
+        <span style="font-size: 10px;">Yes I know the reservation is late, but if we go too early then we'll have to wait around for the bars...</span>
+        <div class="images">
+          <img src="https://stanselmdc.com/wp-content/uploads/sites/38/2022/05/St.Anselm-06646-1.jpg" alt="St. Anselm Interior" />
+          <img src="https://stanselmdc.com/wp-content/uploads/sites/38/2025/08/STANSELM051925_0066-1024x682.jpg" alt="St. Anselm Dining" />
+        </div>
+        <div class="button-group">
+          <a class="resy-link" href="https://resy.com/i/jWRsNcGBjKX" target="_blank">Join Reservation</a>
+          <a class="menu-link" href="https://stanselmdc.com/wp-content/uploads/sites/38/2022/03/SADC-dinner-080725.pdf" target="_blank">View Menu</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="time">🍸 After-Dinner Drinks</div>
+        <p>Select a bar to check out details:</p>
+        <select id="bar-select">
+          <option value="">Select a bar...</option>
+        </select>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="bar-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-image-container">
+        <img id="bar-image" src="" alt="Bar image" />
+      </div>
+      <h2 id="bar-name"></h2>
+      <p id="bar-description"></p>
+      <a id="bar-link" href="#" target="_blank" class="modal-link">Visit Website</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>❤️ Made with love for our special night ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
